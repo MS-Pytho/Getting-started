@@ -1,7 +1,6 @@
-
 def list_maker():
     import random as r
-    list_len = int(input("I'm gonna need lists lenghts\n"))
+    list_len = int(input("Type in:\n"))
     list = r.sample(range(100), list_len)
     return list
 
@@ -31,4 +30,3 @@ def main():
     print(len(list))
 
 main()
-
