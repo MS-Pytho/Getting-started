@@ -1,0 +1,25 @@
+#fibonacci numbers generator
+
+def fib_gen_list(len):
+    a = 1
+    b = 1
+    fib = [a, b]
+    if len == 0:
+        fib = []
+    elif len == 1:
+        fib = [1]
+    else:
+        for i in range(0,len-2): # -2 because of a and b are actually being part of list
+            c = a + b
+            fib.append(c)
+            a = b
+            b = c
+    return fib
+
+
+def main():
+    len = int(input("How many fibo numbers do you want?\n"))
+    print(fib_gen_list(len))
+
+
+main()
