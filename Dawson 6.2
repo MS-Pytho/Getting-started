@@ -1,0 +1,43 @@
+# Program jaka to liczba, losujący randomową liczbę z zakresu 1-100, zadaniem zawodnika jest odgadnięcie liczby w X próbach
+
+import random as r
+
+#stałe globalne
+rand = r.randint(1, 100)
+tries = 6
+print(rand)
+
+# inicjalizacja guess nieprzeszkadzająca w pętli while
+guess = 0
+
+
+def ask_number(question):
+    guess_temp = int(input(question))
+    return guess_temp
+
+
+def higher_lower(guess, rand):
+    if guess > rand:
+        print("Za dużo")
+    elif guess < rand:
+        print("Za mało")
+
+
+def main(guess, rand, tries):
+    while guess != rand and tries != 0:
+#        print("Rand w funkcji main wynosi:", rand)
+#        print("Guess w funkcji main wynosi:", guess)
+        guess = ask_number("Podaj strzał\n")
+        higher_lower(guess, rand)
+        tries = tries - 1
+        if guess != rand:
+            print("Pozostało Ci", tries, "prób.")
+        if guess == rand:
+            break
+    if guess == rand:
+        print("Gratulacje, udało Ci się zgadnąć")
+    else:
+        print("Niestety przegrałeś")
+
+main(guess, rand, tries)
+input("Aby zakończyć wciśnij enter")
