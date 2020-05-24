@@ -1,0 +1,64 @@
+DICT = {"syn 0": "tata 0", "syn 1": "tata 1", "tata 0": "dziadek 0", "tata 1": "dziadek 1"}
+
+choice = str(input("""Którą opcję wybierasz?
+[1] Przeglądaj hasła
+[2] Przeczytaj definicję wybranego hasła
+[3] Dodaj hasło
+[4] Zmień hasło
+[5] Usuń hasło
+[6] Znajdź dziadka
+[7] Opuść program\n"""))
+
+while choice != "7":
+    if choice == "1":
+        print(DICT.keys())
+        choice = str(input("Którą opcję wybierasz?\n"))
+    elif choice == "2":
+        term = str(input("Które hasło chcesz odczytać?\n"))
+        print(DICT.get(term))
+        choice = str(input("Którą opcję wybierasz?\n"))
+    elif choice == "3":
+        term = str(input("Jakie hasło jakie chcesz dodać\n"))
+        if term not in DICT:
+            defi  = str(input("Podaj definicję\n"))
+            DICT[term] = defi
+            print("Hasło zostało dodane")
+        else:
+            print("Termin jest już w słowniku")
+        choice = str(input("Którą opcję wybierasz?\n"))
+    elif choice == "4":
+        term = str(input("Definicję jakiego hasła chcesz zmienić\n"))
+        if term in DICT:
+            DICT[term] = str(input("Podaj nową definicję hasła\n"))
+            print("Definicja hasła '", term, "' zostala zmieniona")
+        else:
+            print("Takiego hasła nie ma w słowniku")
+        choice = str(input("Którą opcję wybierasz?\n"))
+    elif choice == "5":
+        term = str(input("Jakie hasło chcesz usunąć?\n"))
+        if term in DICT:
+            del DICT[term]
+            print("Wpis usunięto")
+        else:
+            print("Takiego hasła nie ma w słowniku")
+        choice = str(input("Którą opcję wybierasz?\n"))
+    elif choice == "6":
+        term = str(input("Czyjego dziadka chcesz znaleźć?\n"))
+        if DICT[term] in DICT.keys():
+#            print(DICT[term])
+#            print(DICT.keys())
+            print("Dziadkiem", term, "jest", DICT[DICT[term]])
+        else:
+            print("W bazie danych brak informacji o dziadku osoby", term)
+        choice = str(input("Którą opcję wybierasz?\n"))
+
+    else:
+        print("Wybór nieprawidłowy")
+        choice = str(input("""Którą opcję wybierasz?
+        [1] Przeglądaj hasła
+        [2] Przeczytaj definicję wybranego hasła
+        [3] Dodaj hasło
+        [4] Zmień hasło
+        [5] Usuń hasło
+        [6] Znajdź dziadka 
+        [7] Opuść program\n"""))
