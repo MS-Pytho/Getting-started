@@ -1,0 +1,25 @@
+#checking if prime
+
+def get_number():
+    number = int(input("Input number to check\n"))
+    return number
+
+
+def check(number):
+    temp = 0
+    for i in range(2, abs(number//2+1)):
+        if number%i == 0:
+            temp =+ 1
+    if temp > 0:
+        print("Totally not prime")
+    elif number == 0 or number == 1:
+        print(number, "technically is not prime but it isnt divisible by anything else but itself...")
+    else:
+        print("Totally prime")
+
+def main():
+    number = get_number()
+    check(number)
+
+
+main()
